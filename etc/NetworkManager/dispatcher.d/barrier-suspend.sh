@@ -6,4 +6,5 @@ target_if=$(nmcli device | grep ether | xargs | cut -d ' ' -f1)
 if [ $interface == $target_if ] && [ $event != "up" ]; then
   killall barrier barrier
   killall input-leap
+  killall input-leapc
 fi

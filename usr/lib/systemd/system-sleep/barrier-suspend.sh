@@ -4,4 +4,5 @@
 if [ "${1}" == "pre" ]; then
   killall barrier barrierc
   killall input-leap
+  killall input-leapc
 fi
