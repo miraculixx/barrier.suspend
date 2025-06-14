@@ -4,20 +4,31 @@ suspend barrier execution to avoid keyboard issues
 The problem
 -----------
 
-When barrier is running but looses network connection
-to the server it tends to go awry. In particular, the
-keyboard tends to get hooked in a Ctrl-pressed state,
-and the whole system can become unstable due to 
-random and intermittent key presses.
+When barrier or input-leap is running but looses network connection to the server it
+tends to go awry. In particular, the keyboard tends to get hooked in a Ctrl-pressed
+state, and the whole system can become unstable due to  random and intermittent
+key presses.
+
+The problem has been reported and documented in various places, including:
+
+* https://github.com/input-leap/input-leap/issues/207
+* https://github.com/debauchee/barrier/issues/207
+
 
 The solution
 ------------
 
-We disable (kill) barrier upon network down events
-and upon system suspend.
+We disable (kill) barrier upon network down events and upon system suspend.
 
-Insallation
------------
+
+Installation
+------------
+
+Note: This has been tested on Linux Mint 21.2 (Vanessa) only. If you use a different
+      distribution, you may need to adapt the solution to your system. Please report
+      any issues you encounter.
+
+To install this solution, you need to clone the repository and run the makefile.
 
     $ make install
 
@@ -25,11 +36,11 @@ If you're using systemd for networking, also run
 
     $ make use-systemd
 
+
 How this works
 --------------
 
-Upon much investigation I found the following solution
-to work best:
+Upon much investigation I found the following solution to work best:
 
 1. Using systemd networkd-dispatcher
 
